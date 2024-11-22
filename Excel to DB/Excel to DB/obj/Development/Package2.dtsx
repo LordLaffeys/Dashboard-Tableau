@@ -1,0 +1,3501 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/7/2023 8:40:10 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-932VEERP"
+  DTS:CreatorName="LAPTOP-932VEERP\joviy"
+  DTS:DTSID="{95F4FC40-0A05-4513-8E86-F67253652F88}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{8E852753-23CC-47B6-A793-C1A16315CC24}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E52DA687-1A31-4542-99FF-B235CEC69888}"
+      DTS:ObjectName="(localdb)\Local.ACT_SSIS_1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(localdb)\Local;Initial Catalog=ACT_SSIS_1;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{E52DA687-1A31-4542-99FF-B235CEC69888}(localdb)\Local.ACT_SSIS_1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Join DB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{405eb8d4-133b-432e-b038-d8bccf99a6ff}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Join DB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Join DB\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[duration_minutes]"
+                      cachedDataType="r8"
+                      cachedName="duration_minutes"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[duration_minutes]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[duration_seasons]"
+                      cachedDataType="r8"
+                      cachedName="duration_seasons"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[duration_seasons]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="type"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="title"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[date_added]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_added"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[date_added]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[release_year]"
+                      cachedDataType="r8"
+                      cachedName="release_year"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[release_year]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rating"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[rating]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="description"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[description]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Join DB\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Right Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Join DB\Sort 1.Outputs[Sort Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join.Inputs[Merge Join Right Input].Columns[cast]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="cast"
+                      lineageId="Package\Join DB\Sort 1.Outputs[Sort Output].Columns[cast]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[duration_minutes]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[duration_minutes]"
+                      name="duration_minutes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[duration_minutes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[duration_seasons]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[duration_seasons]"
+                      name="duration_seasons">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[duration_seasons]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[type]"
+                      name="type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[title]"
+                      name="title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[date_added]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[date_added]"
+                      name="date_added">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[date_added]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[release_year]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[release_year]"
+                      name="release_year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[release_year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[rating]"
+                      name="rating">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[rating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[description]"
+                      name="description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Left Input].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[cast]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[cast]"
+                      name="cast">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join.Inputs[Merge Join Right Input].Columns[cast]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Merge Join 1"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[duration_minutes]"
+                      cachedDataType="r8"
+                      cachedName="duration_minutes"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[duration_minutes]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[duration_seasons]"
+                      cachedDataType="r8"
+                      cachedName="duration_seasons"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[duration_seasons]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="type"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="title"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[date_added]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_added"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[date_added]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[release_year]"
+                      cachedDataType="r8"
+                      cachedName="release_year"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[release_year]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rating"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[rating]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="description"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[cast]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="cast"
+                      lineageId="Package\Join DB\Merge Join.Outputs[Merge Join Output].Columns[cast]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Right Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Join DB\Sort 3.Outputs[Sort Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 1.Inputs[Merge Join Right Input].Columns[listed_in]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="listed_in"
+                      lineageId="Package\Join DB\Sort 3.Outputs[Sort Output].Columns[listed_in]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[duration_minutes]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[duration_minutes]"
+                      name="duration_minutes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[duration_minutes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[duration_seasons]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[duration_seasons]"
+                      name="duration_seasons">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[duration_seasons]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[type]"
+                      name="type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[title]"
+                      name="title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[date_added]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[date_added]"
+                      name="date_added">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[date_added]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[release_year]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[release_year]"
+                      name="release_year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[release_year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[rating]"
+                      name="rating">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[rating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[description]"
+                      name="description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[cast]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[cast]"
+                      name="cast">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input].Columns[cast]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[listed_in]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[listed_in]"
+                      name="listed_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 1.Inputs[Merge Join Right Input].Columns[listed_in]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Merge Join 4"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 4"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[duration_minutes]"
+                      cachedDataType="r8"
+                      cachedName="duration_minutes"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[duration_minutes]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[duration_seasons]"
+                      cachedDataType="r8"
+                      cachedName="duration_seasons"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[duration_seasons]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="type"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="title"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[date_added]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_added"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[date_added]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[release_year]"
+                      cachedDataType="r8"
+                      cachedName="release_year"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[release_year]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rating"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[rating]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="description"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[cast]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="cast"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[cast]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[listed_in]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="listed_in"
+                      lineageId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output].Columns[listed_in]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Right Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Join DB\Sort 5.Outputs[Sort Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 4.Inputs[Merge Join Right Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="country"
+                      lineageId="Package\Join DB\Sort 5.Outputs[Sort Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[duration_minutes]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[duration_minutes]"
+                      name="duration_minutes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[duration_minutes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[duration_seasons]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[duration_seasons]"
+                      name="duration_seasons">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[duration_seasons]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[type]"
+                      name="type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[title]"
+                      name="title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[date_added]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[date_added]"
+                      name="date_added">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[date_added]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[release_year]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[release_year]"
+                      name="release_year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[release_year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[rating]"
+                      name="rating">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[rating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[description]"
+                      name="description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[cast]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[cast]"
+                      name="cast">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[cast]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[listed_in]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[listed_in]"
+                      name="listed_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input].Columns[listed_in]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[country]"
+                      name="country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 4.Inputs[Merge Join Right Input].Columns[country]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Merge Join 5"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 5"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[duration_minutes]"
+                      cachedDataType="r8"
+                      cachedName="duration_minutes"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[duration_minutes]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[duration_seasons]"
+                      cachedDataType="r8"
+                      cachedName="duration_seasons"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[duration_seasons]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="type"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="title"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[date_added]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_added"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[date_added]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[release_year]"
+                      cachedDataType="r8"
+                      cachedName="release_year"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[release_year]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rating"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[rating]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="description"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[cast]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="cast"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[cast]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[listed_in]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="listed_in"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[listed_in]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="country"
+                      lineageId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Right Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Join DB\Sort 7.Outputs[Sort Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Merge Join 5.Inputs[Merge Join Right Input].Columns[director]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="director"
+                      lineageId="Package\Join DB\Sort 7.Outputs[Sort Output].Columns[director]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[duration_minutes]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[duration_minutes]"
+                      name="duration_minutes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[duration_minutes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[duration_seasons]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[duration_seasons]"
+                      name="duration_seasons">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[duration_seasons]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[type]"
+                      name="type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[title]"
+                      name="title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[date_added]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[date_added]"
+                      name="date_added">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[date_added]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[release_year]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[release_year]"
+                      name="release_year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[release_year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[rating]"
+                      name="rating">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[rating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[description]"
+                      name="description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[cast]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[cast]"
+                      name="cast">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[cast]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[listed_in]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[listed_in]"
+                      name="listed_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[listed_in]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[country]"
+                      name="country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input].Columns[country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[director]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[director]"
+                      name="director">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Join DB\Merge Join 5.Inputs[Merge Join Right Input].Columns[director]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Netflix_Join"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Netflix_Join"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Netflix_Join]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Join DB\Netflix_Join.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[duration_minutes]"
+                      cachedDataType="r8"
+                      cachedName="duration_minutes"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[duration_minutes]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[duration_minutes]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[duration_seasons]"
+                      cachedDataType="r8"
+                      cachedName="duration_seasons"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[duration_seasons]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[duration_seasons]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="type"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[date_added]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_added"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[date_added]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[date_added]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[release_year]"
+                      cachedDataType="r8"
+                      cachedName="release_year"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[release_year]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[release_year]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rating"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[rating]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[rating]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[show_id]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[cast]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="cast"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[cast]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[cast]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[listed_in]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="listed_in"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[listed_in]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[listed_in]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[director]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="director"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[director]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[director]" />
+                    <inputColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[duration_minutes]"
+                      dataType="r8"
+                      name="duration_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[duration_seasons]"
+                      dataType="r8"
+                      name="duration_seasons" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="255"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[date_added]"
+                      dataType="dbTimeStamp"
+                      name="date_added" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[release_year]"
+                      dataType="r8"
+                      name="release_year" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[rating]"
+                      dataType="wstr"
+                      length="255"
+                      name="rating" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="255"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[show_id]"
+                      dataType="i4"
+                      name="show_id" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[cast]"
+                      dataType="wstr"
+                      length="255"
+                      name="cast" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[listed_in]"
+                      dataType="wstr"
+                      length="255"
+                      name="listed_in" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[director]"
+                      dataType="wstr"
+                      length="255"
+                      name="director" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="255"
+                      name="country" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Netflix_Join.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Netflix_Join.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\Netflix_Join.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Join DB\Netflix_Join.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\Netflix_Join.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\netflix_titles"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="netflix_titles"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[netflix_titles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Join DB\netflix_titles.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[duration_minutes]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[duration_minutes]"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[duration_minutes]"
+                      name="duration_minutes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[duration_seasons]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[duration_seasons]"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[duration_seasons]"
+                      name="duration_seasons"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[type]"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[type]"
+                      name="type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[date_added]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[date_added]"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[date_added]"
+                      name="date_added"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[release_year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[release_year]"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[release_year]"
+                      name="release_year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[rating]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[rating]"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[rating]"
+                      name="rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[show_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[show_id]"
+                      name="show_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[duration_minutes]"
+                      dataType="r8"
+                      name="duration_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[duration_seasons]"
+                      dataType="r8"
+                      name="duration_seasons" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="255"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[date_added]"
+                      dataType="dbTimeStamp"
+                      name="date_added" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[release_year]"
+                      dataType="r8"
+                      name="release_year" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[rating]"
+                      dataType="wstr"
+                      length="255"
+                      name="rating" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="255"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      dataType="i4"
+                      name="show_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[duration_minutes]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[duration_minutes]"
+                      name="duration_minutes" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[duration_seasons]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[duration_seasons]"
+                      name="duration_seasons" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[date_added]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[date_added]"
+                      name="date_added" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[release_year]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[release_year]"
+                      name="release_year" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[rating]"
+                      name="rating" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      name="show_id" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\netflix_titles_cast"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="netflix_titles_cast"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[netflix_titles_cast]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Join DB\netflix_titles_cast.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].Columns[show_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      lineageId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].Columns[show_id]"
+                      name="show_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].Columns[cast]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].ExternalColumns[cast]"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].Columns[cast]"
+                      name="cast"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      dataType="i4"
+                      name="show_id" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].ExternalColumns[cast]"
+                      dataType="wstr"
+                      length="255"
+                      name="cast" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output].Columns[cast]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output].Columns[cast]"
+                      name="cast" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      name="show_id" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\netflix_titles_category"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="netflix_titles_category"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[netflix_titles_category]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Join DB\netflix_titles_category.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].Columns[show_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      lineageId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].Columns[show_id]"
+                      name="show_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].Columns[listed_in]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].ExternalColumns[listed_in]"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].Columns[listed_in]"
+                      name="listed_in"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      dataType="i4"
+                      name="show_id" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].ExternalColumns[listed_in]"
+                      dataType="wstr"
+                      length="255"
+                      name="listed_in" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output].Columns[listed_in]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output].Columns[listed_in]"
+                      name="listed_in" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      name="show_id" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\netflix_titles_countries"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="netflix_titles_countries"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[netflix_titles_countries]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Join DB\netflix_titles_countries.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].Columns[show_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      lineageId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].Columns[show_id]"
+                      name="show_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      dataType="i4"
+                      name="show_id" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="255"
+                      name="country" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output].Columns[country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      name="show_id" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\netflix_titles_directors"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="netflix_titles_directors"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[netflix_titles_directors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Join DB\netflix_titles_directors.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  connectionManagerRefId="Package.ConnectionManagers[(localdb)\Local.ACT_SSIS_1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].Columns[show_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      lineageId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].Columns[show_id]"
+                      name="show_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].Columns[director]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].ExternalColumns[director]"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].Columns[director]"
+                      name="director"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].ExternalColumns[show_id]"
+                      dataType="i4"
+                      name="show_id" />
+                    <externalMetadataColumn
+                      refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].ExternalColumns[director]"
+                      dataType="wstr"
+                      length="255"
+                      name="director" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output].Columns[director]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output].Columns[director]"
+                      name="director" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output].Columns[show_id]"
+                      name="show_id" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[duration_minutes]"
+                      cachedDataType="r8"
+                      cachedName="duration_minutes"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[duration_minutes]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[duration_seasons]"
+                      cachedDataType="r8"
+                      cachedName="duration_seasons"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[duration_seasons]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="type"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="title"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[title]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[date_added]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_added"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[date_added]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[release_year]"
+                      cachedDataType="r8"
+                      cachedName="release_year"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[release_year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[rating]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rating"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[rating]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="description"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[description]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort.Inputs[Sort Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      lineageId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[show_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[duration_minutes]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[duration_minutes]"
+                      name="duration_minutes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[duration_minutes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[duration_seasons]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[duration_seasons]"
+                      name="duration_seasons">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[duration_seasons]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[type]"
+                      name="type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[title]"
+                      name="title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[date_added]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[date_added]"
+                      name="date_added">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[date_added]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[release_year]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[release_year]"
+                      name="release_year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[release_year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[rating]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[rating]"
+                      name="rating">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[rating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[description]"
+                      name="description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort.Outputs[Sort Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Sort.Outputs[Sort Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles.Outputs[OLE DB Source Output].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Sort 1.Inputs[Sort Input].Columns[cast]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="cast"
+                      lineageId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].Columns[cast]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort 1.Inputs[Sort Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      lineageId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].Columns[show_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Sort 1.Outputs[Sort Output].Columns[cast]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Sort 1.Outputs[Sort Output].Columns[cast]"
+                      name="cast">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].Columns[cast]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort 1.Outputs[Sort Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Sort 1.Outputs[Sort Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Sort 3"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 3"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Sort 3.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Sort 3.Inputs[Sort Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      lineageId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].Columns[show_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort 3.Inputs[Sort Input].Columns[listed_in]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="listed_in"
+                      lineageId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].Columns[listed_in]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Sort 3.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Sort 3.Outputs[Sort Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Sort 3.Outputs[Sort Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort 3.Outputs[Sort Output].Columns[listed_in]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Sort 3.Outputs[Sort Output].Columns[listed_in]"
+                      name="listed_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output].Columns[listed_in]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Sort 5"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 5"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Sort 5.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Sort 5.Inputs[Sort Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      lineageId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].Columns[show_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort 5.Inputs[Sort Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="country"
+                      lineageId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].Columns[country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Sort 5.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Sort 5.Outputs[Sort Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Sort 5.Outputs[Sort Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort 5.Outputs[Sort Output].Columns[country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Sort 5.Outputs[Sort Output].Columns[country]"
+                      name="country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output].Columns[country]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Join DB\Sort 7"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 7"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Join DB\Sort 7.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Join DB\Sort 7.Inputs[Sort Input].Columns[show_id]"
+                      cachedDataType="r8"
+                      cachedName="show_id"
+                      lineageId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].Columns[show_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Join DB\Sort 7.Inputs[Sort Input].Columns[director]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="director"
+                      lineageId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].Columns[director]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Join DB\Sort 7.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Join DB\Sort 7.Outputs[Sort Output].Columns[show_id]"
+                      dataType="r8"
+                      lineageId="Package\Join DB\Sort 7.Outputs[Sort Output].Columns[show_id]"
+                      name="show_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].Columns[show_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Join DB\Sort 7.Outputs[Sort Output].Columns[director]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Join DB\Sort 7.Outputs[Sort Output].Columns[director]"
+                      name="director">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output].Columns[director]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Join DB.Paths[Merge Join Output]"
+              endId="Package\Join DB\Merge Join 1.Inputs[Merge Join Left Input]"
+              name="Merge Join Output"
+              startId="Package\Join DB\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Join DB.Paths[Merge Join Output1]"
+              endId="Package\Join DB\Merge Join 4.Inputs[Merge Join Left Input]"
+              name="Merge Join Output"
+              startId="Package\Join DB\Merge Join 1.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Join DB.Paths[Merge Join Output2]"
+              endId="Package\Join DB\Merge Join 5.Inputs[Merge Join Left Input]"
+              name="Merge Join Output"
+              startId="Package\Join DB\Merge Join 4.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Join DB.Paths[Merge Join Output3]"
+              endId="Package\Join DB\Netflix_Join.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\Join DB\Merge Join 5.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Join DB.Paths[OLE DB Source Output]"
+              endId="Package\Join DB\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Join DB\netflix_titles.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Join DB.Paths[OLE DB Source Output1]"
+              endId="Package\Join DB\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Join DB\netflix_titles_cast.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Join DB.Paths[OLE DB Source Output2]"
+              endId="Package\Join DB\Sort 3.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Join DB\netflix_titles_category.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Join DB.Paths[OLE DB Source Output3]"
+              endId="Package\Join DB\Sort 5.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Join DB\netflix_titles_countries.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Join DB.Paths[OLE DB Source Output4]"
+              endId="Package\Join DB\Sort 7.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Join DB\netflix_titles_directors.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Join DB.Paths[Sort Output]"
+              endId="Package\Join DB\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Join DB\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Join DB.Paths[Sort Output1]"
+              endId="Package\Join DB\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Join DB\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\Join DB.Paths[Sort Output2]"
+              endId="Package\Join DB\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Join DB\Sort 3.Outputs[Sort Output]" />
+            <path
+              refId="Package\Join DB.Paths[Sort Output3]"
+              endId="Package\Join DB\Merge Join 4.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Join DB\Sort 5.Outputs[Sort Output]" />
+            <path
+              refId="Package\Join DB.Paths[Sort Output4]"
+              endId="Package\Join DB\Merge Join 5.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Join DB\Sort 7.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="130,46"
+          Id="Package\Join DB"
+          TopLeft="288,190" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Join DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Join DB\netflix_titles"
+          TopLeft="28,63" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Join DB\Sort 7"
+          TopLeft="835,332.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Join DB\netflix_titles_directors"
+          TopLeft="798,265.5" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Join DB\Sort 1"
+          TopLeft="222,133" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Join DB\netflix_titles_category"
+          TopLeft="392.5,133" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Join DB\netflix_titles_cast"
+          TopLeft="202,65" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Join DB\Netflix_Join"
+          TopLeft="695.777777777778,595.138888888889" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Join DB\Sort 5"
+          TopLeft="619.5,253" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Join DB\Merge Join 5"
+          TopLeft="692.5,493.75" />
+        <NodeLayout
+          Size="99,42"
+          Id="Package\Join DB\Sort"
+          TopLeft="50,133" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Join DB\Merge Join 4"
+          TopLeft="481.25,405" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Join DB\netflix_titles_countries"
+          TopLeft="587.5,185" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Join DB\Merge Join 1"
+          TopLeft="284,312" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Join DB\Sort 3"
+          TopLeft="428.5,207" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Join DB\Merge Join"
+          TopLeft="116,212" />
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Sort Output4]"
+          TopLeft="889,374.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-103.166666666667,119.25"
+              Start="0,0"
+              End="-103.166666666667,111.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.7527855153204" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.7527855153204"
+                    Point2="0,70.7527855153204"
+                    Point3="-4,70.7527855153204" />
+                  <mssgle:LineSegment
+                    End="-99.1666666666666,70.7527855153204" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-99.1666666666666,70.7527855153204"
+                    Point2="-103.166666666667,70.7527855153204"
+                    Point3="-103.166666666667,74.7527855153204" />
+                  <mssgle:LineSegment
+                    End="-103.166666666667,111.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Sort Output3]"
+          TopLeft="673.5,295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-98.9166666666666,110"
+              Start="0,0"
+              End="-98.9166666666666,102.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.2646239554318" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.2646239554318"
+                    Point2="0,65.2646239554318"
+                    Point3="-4,65.2646239554318" />
+                  <mssgle:LineSegment
+                    End="-94.9166666666666,65.2646239554318" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-94.9166666666666,65.2646239554318"
+                    Point2="-98.9166666666666,65.2646239554318"
+                    Point3="-98.9166666666666,69.2646239554318" />
+                  <mssgle:LineSegment
+                    End="-98.9166666666666,102.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Sort Output2]"
+          TopLeft="482.5,249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-105.166666666667,63"
+              Start="0,0"
+              End="-105.166666666667,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.3788300835655" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.3788300835655"
+                    Point2="0,37.3788300835655"
+                    Point3="-4,37.3788300835655" />
+                  <mssgle:LineSegment
+                    End="-101.166666666667,37.3788300835655" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-101.166666666667,37.3788300835655"
+                    Point2="-105.166666666667,37.3788300835655"
+                    Point3="-105.166666666667,41.3788300835655" />
+                  <mssgle:LineSegment
+                    End="-105.166666666667,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Sort Output1]"
+          TopLeft="276,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-72.6666666666667,37"
+              Start="0,0"
+              End="-72.6666666666667,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.9361069836553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.9361069836553"
+                    Point2="0,21.9361069836553"
+                    Point3="-4,21.9361069836553" />
+                  <mssgle:LineSegment
+                    End="-68.6666666666667,21.9361069836553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.6666666666667,21.9361069836553"
+                    Point2="-72.6666666666667,21.9361069836553"
+                    Point3="-72.6666666666667,25.9361069836553" />
+                  <mssgle:LineSegment
+                    End="-72.6666666666667,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Sort Output]"
+          TopLeft="99.5,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.1666666666667,37"
+              Start="0,0"
+              End="62.1666666666667,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.9361069836553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.9361069836553"
+                    Point2="0,21.9361069836553"
+                    Point3="4,21.9361069836553" />
+                  <mssgle:LineSegment
+                    End="58.1666666666667,21.9361069836553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58.1666666666667,21.9361069836553"
+                    Point2="62.1666666666667,21.9361069836553"
+                    Point3="62.1666666666667,25.9361069836553" />
+                  <mssgle:LineSegment
+                    End="62.1666666666667,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[OLE DB Source Output4]"
+          TopLeft="889.75,307.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[OLE DB Source Output3]"
+          TopLeft="677.25,227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[OLE DB Source Output2]"
+          TopLeft="483.75,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[OLE DB Source Output1]"
+          TopLeft="279.75,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[OLE DB Source Output]"
+          TopLeft="98,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Merge Join Output3]"
+          TopLeft="763.638888888889,535.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.388888888889"
+              Start="0,0"
+              End="0,51.888888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.888888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Merge Join Output2]"
+          TopLeft="552.25,447">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="211.25,46.75"
+              Start="0,0"
+              End="211.25,39.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.375"
+                    Point2="0,23.375"
+                    Point3="4,23.375" />
+                  <mssgle:LineSegment
+                    End="207.25,23.375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="207.25,23.375"
+                    Point2="211.25,23.375"
+                    Point3="211.25,27.375" />
+                  <mssgle:LineSegment
+                    End="211.25,39.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Merge Join Output1]"
+          TopLeft="355,354">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197.25,51"
+              Start="0,0"
+              End="197.25,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
+                  <mssgle:LineSegment
+                    End="193.25,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="193.25,25.5"
+                    Point2="197.25,25.5"
+                    Point3="197.25,29.5" />
+                  <mssgle:LineSegment
+                    End="197.25,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Join DB.Paths[Merge Join Output]"
+          TopLeft="182.5,254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="172.5,58"
+              Start="0,0"
+              End="172.5,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="168.5,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="168.5,29"
+                    Point2="172.5,29"
+                    Point3="172.5,33" />
+                  <mssgle:LineSegment
+                    End="172.5,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
